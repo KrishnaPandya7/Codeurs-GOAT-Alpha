@@ -1,0 +1,147 @@
+import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import '../fitness_app_theme.dart';
+
+final Uri _url = Uri.parse(
+    'https://docs.google.com/forms/d/e/1FAIpQLSfNvL1KNxPbxWQW-SS_CLgRwuQU282Gv7OVRfoCHM4kFwm9LA/viewform?usp=sf_link');
+Future<void> _launchUrl() async {
+  if (!await launchUrl(_url)) {
+    throw 'Could not launch $_url';
+  }
+}
+
+class RunningView extends StatelessWidget {
+  final AnimationController? animationController;
+  final Animation<double>? animation;
+
+  const RunningView({Key? key, this.animationController, this.animation})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: animationController!,
+      builder: (BuildContext context, Widget? child) {
+        return FadeTransition(
+          opacity: animation!,
+          // ignore: unnecessary_new
+          child: new Transform(
+            transform: Matrix4.translationValues(
+                0.0, 30 * (1.0 - animation!.value), 0.0),
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 24, right: 24, top: 0, bottom: 0),
+                  child: Stack(
+                    clipBehavior: Clip.none,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(top: 16, bottom: 16),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: FitnessAppTheme.white,
+                            borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(8.0),
+                                bottomLeft: Radius.circular(8.0),
+                                bottomRight: Radius.circular(8.0),
+                                topRight: Radius.circular(8.0)),
+                            boxShadow: <BoxShadow>[
+                              BoxShadow(
+                                  color: FitnessAppTheme.grey.withOpacity(0.4),
+                                  offset: const Offset(1.1, 1.1),
+                                  blurRadius: 10.0),
+                            ],
+                          ),
+                          child: Stack(
+                            alignment: Alignment.topLeft,
+                            children: <Widget>[
+                              ClipRRect(
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(8.0)),
+                                child: SizedBox(
+                                  height: 74,
+                                  child: AspectRatio(
+                                    aspectRatio: 1.714,
+                                    child: Image.asset(
+                                        "assets/fitness_app/back.png"),
+                                  ),
+                                ),
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  const Row(
+                                    // ignore: prefer_const_literals_to_create_immutables
+                                    children: <Widget>[
+                                      // ignore: prefer_const_constructors
+                                      SizedBox(
+                                        child: Padding(
+                                          padding: EdgeInsets.only(
+                                              left: 100, right: 16, top: 16),
+                                          child: InkWell(
+                                            onTap: _launchUrl,
+                                            child: Text(
+                                              "Your Feedback.",
+                                              textAlign: TextAlign.left,
+                                              style: TextStyle(
+                                                fontFamily:
+                                                    FitnessAppTheme.fontName,
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 18,
+                                                letterSpacing: 0.0,
+                                                color: Color.fromARGB(
+                                                    255, 135, 79, 225),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                      left: 100,
+                                      bottom: 12,
+                                      top: 4,
+                                      right: 16,
+                                    ),
+                                    child: Text(
+                                      "your words matter",
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                        fontFamily: FitnessAppTheme.fontName,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 14,
+                                        letterSpacing: 0.0,
+                                        color: FitnessAppTheme.nearlyBlack
+                                            .withOpacity(0.5),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: -16,
+                        left: 0,
+                        child: SizedBox(
+                          width: 110,
+                          height: 110,
+                          child: Image.asset("assets/fitness_app/runner.png"),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}

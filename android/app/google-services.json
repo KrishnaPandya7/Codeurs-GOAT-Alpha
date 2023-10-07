@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "850359804922",
+    "project_id": "healup-e2a9b",
+    "storage_bucket": "healup-e2a9b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:850359804922:android:faa4eedad68179b1d77a43",
+        "android_client_info": {
+          "package_name": "com.example.healup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "850359804922-s98o700qge23pna3ca1a91br0kqnjej4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcpT5WrkdmY_ous-5tFxq3ldegUrjl9l0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "850359804922-s98o700qge23pna3ca1a91br0kqnjej4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "launchwp",
+            "cwd": "Users/gopal/Documents/launchwp",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "launchwp (profile mode)",
+            "cwd": "Users/gopal/Documents/launchwp",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "launchwp (release mode)",
+            "cwd": "Users/gopal/Documents/launchwp",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
